@@ -1,11 +1,18 @@
+import './globals.css';
+import ReduxProvider from '@/redux/provider';
+
+export const metadata = {
+  title: 'Your App',
+  description: 'Your description',
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body style={{ padding: 20 }}>
-        <nav style={{ marginBottom: 20 }}>
-          <a href="/">Home</a>
-        </nav>
-        {children}
+      <body>
+        <ReduxProvider>
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );
