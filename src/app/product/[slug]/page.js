@@ -2,15 +2,30 @@
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+function slugify(text) {
+  return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+}
+
 export default function ProductDetail() {
-  const { id } = useParams();
+
+  const { slug } = useParams();
+
+ // const { id } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    fetch(`https://dummyjson.com/products/${id}`)
+    fetch(`https://dummyjson.com/products`)
       .then(res => res.json())
-      .then(data => setProduct(data));
-  }, [id]);
+      .then(data => {
+        const withSlugs = data.products.map(p => ({
+          ...p,
+          slug: slugify(p.title)
+        }))
+        const found = withSlugs.find(p => p.slug === slug);
+        setProduct(found);
+      });
+
+  }, [slug]);
 
   if (!product) return <p>Loading...</p>;
 

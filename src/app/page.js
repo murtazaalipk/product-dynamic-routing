@@ -2,6 +2,10 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
+function slugify(text) {
+  return text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+}
+
 export default function HomePage() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState('');
@@ -33,15 +37,15 @@ export default function HomePage() {
 
       <select onChange={e => setCategory(e.target.value)} defaultValue="">
         <option value="">All Categories</option>
-        {categories.map(cat => (
-          <option key={cat} value={cat}>{cat}</option>
+        {categories.map(c => (
+          <option key={c} value={c}>{c}</option>
         ))}
       </select>
 
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {filtered.map(product => (
           <div key={product.id} style={{ border: '1px solid #ddd', margin: 10, padding: 10, width: 200 }}>
-            <Link href={`/product/${product.id}`}>
+            <Link href={`/product/${slugify(product.title)}`}>
               <img src={product.thumbnail} width="100%" />
               <h3>{product.title}</h3>
             </Link>
