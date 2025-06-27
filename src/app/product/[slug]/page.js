@@ -8,11 +8,13 @@ function slugify(text) {
 }
 
 export default function ProductDetail() {
-const products = useSelector((state) => state.products);
+// const products = useSelector((state) => state.products);
+const { items, loading, error } = useSelector((state) => state.products)
+
   const { slug } = useParams();
 
   // Find product by matching slugified title
-  const product = products.find(p => slugify(p.title) === slug);
+  const product = items.find(p => slugify(p.title) === slug);
 
   if (!product) {
     return <p className="text-center mt-10 text-red-500">Product not found.</p>;
