@@ -45,7 +45,7 @@ export default function ProductForm() {
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {filtered.map(product => (
           <div key={product.id} style={{ border: '1px solid #ddd', margin: 10, padding: 10, width: 200 }}>
-            <Link href={`/product/${slugify(product.title)}`}>
+            <Link href={`/product/${slugify(product.title)}?source=formData`}>
               <img src={product.images} width="100%" />
               <h3>{product.title}</h3>
             </Link>
