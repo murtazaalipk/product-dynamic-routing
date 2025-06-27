@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk  } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
 
 export const fetchProducts = createAsyncThunk(
   'product/fetchProducts',
@@ -31,5 +30,5 @@ const productSlice = createSlice({
   },
 });
 
-// export const { addProduct } = productSlice.actions;
+export const { addProduct } = productSlice.actions;
 export default productSlice.reducer;

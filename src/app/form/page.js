@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addProduct } from '@/redux/productSlice';
+import { addProduct } from '@/redux/formSlice';
 import { useRouter } from 'next/navigation';
 
 export default function ProductForm() {
@@ -24,7 +24,7 @@ export default function ProductForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addProduct({ ...form, price: parseFloat(form.price), images: [form.image] }));
-    router.push('/');
+    router.push('/product-form');
   };
 
   return (
