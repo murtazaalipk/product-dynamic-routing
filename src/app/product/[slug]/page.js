@@ -1,5 +1,5 @@
 'use client';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams , useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
 function slugify(text) {
@@ -8,7 +8,7 @@ function slugify(text) {
 
 export default function ProductDetail() {
   const { items, loading, error } = useSelector((state) => state.products);
-
+  const router = useRouter();
   const { slug } = useParams();
   const searchParams = useSearchParams();
   const source = searchParams.get('source');
@@ -21,6 +21,13 @@ export default function ProductDetail() {
     }
     return (
       <div className=" max-w-96 mx-auto p-6 mt-10 bg-white rounded-lg shadow">
+        {/* Return Button */}
+        <button
+          onClick={() => router.back()}
+          className="mb-4 text-sm bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+        >
+          ← Return
+        </button>
         <h1 className="text-2xl font-bold mb-4 text-gray-800">{product.title}</h1>
         <img
           src={product.images}
@@ -49,6 +56,13 @@ export default function ProductDetail() {
 
   return (
     <div className=" max-w-96 mx-auto p-6 mt-10 bg-white rounded-lg shadow">
+      {/* Return Button */}
+        <button
+          onClick={() => router.back()}
+          className="mb-4 text-sm bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+        >
+          ← Return
+        </button>
       <h1 className="text-2xl font-bold mb-4 text-gray-800">{product.title}</h1>
       <img
         src={product.images}

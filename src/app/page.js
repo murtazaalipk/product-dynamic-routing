@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { fetchProducts } from '@/redux/productSlice';
+import Header from './components/Header/page';
 
 
 // Utility function to slugify product titles
@@ -50,6 +51,8 @@ export default function HomePage() {
   );
 
   return (
+    <>
+    <Header page="home"/>
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 text-center">Products Fetch From API</h1>
 
@@ -96,5 +99,6 @@ export default function HomePage() {
         ))}
       </div>
     </div>
+    </>
   );
 }

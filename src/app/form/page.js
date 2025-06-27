@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '@/redux/formSlice';
 import { useRouter } from 'next/navigation';
+import Headers from '../components/Header/page'; // Adjust the import path as necessary
 
 export default function ProductForm() {
   const dispatch = useDispatch();
@@ -28,6 +29,8 @@ export default function ProductForm() {
   };
 
   return (
+    <>
+    <Headers page="form"/>
    <form
   onSubmit={handleSubmit}
   className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-md space-y-4"
@@ -88,6 +91,6 @@ export default function ProductForm() {
     Add Product
   </button>
 </form>
-
+</>
   );
 }

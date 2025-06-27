@@ -27,7 +27,15 @@ export default function ProductForm() {
 return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 text-center">Products from Form</h1>
-
+{/* Add More Button */}
+      <div className="flex justify-end mb-6">
+        <Link
+          href="/form"
+          className="bg-blue-600 text-white px-5 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+        >
+          Add More Product
+        </Link>
+      </div>
       {/* Search + Category Filter */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
         <input
